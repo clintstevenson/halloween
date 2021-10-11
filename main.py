@@ -1,47 +1,54 @@
-from gpiozero import MotionSensor, LED
+import gpiozero as gz
 import time
 from datetime import datetime
 import logging
+import pygame as pg
+import os
 
-PIR_SENSOR = MotionSensor(17)
-relay1 = LED(27)
-relay2 = LED(22)
+pg.mixer.init()
+
+RELAY_2 = 22
+RELAY_1 = 23
+
+PIR_SENSOR = 24
 
 def halloween():
+	pir = gz.MotionSensor(PIR_SENSOR)
+	relay1 = gz.OutputDevice(RELAY_1, active_high=False, initial_value=False)
+	relay2 = gz.OutputDevice(RELAY_2, active_high=False, initial_value=False)
+
 	logging.basicConfig(filename='halloween.log',level=logging.DEBUG)
 	logging.debug('Starting Halloween')
 
 	while True:
 		try:
-			# PIR_SENSOR.wait_for_motion()
 			now = datetime.now()
-			logging.info("Motion Detected - " + now.strftime("%d/%m/%Y %H:%M:%S"))
+			pir.wait_for_motion(timeout = None)
 
-			logging.info('Relay1 on')
-			PIR_SENSOR.when_motion = relay1.on
+			if pir.motion_detected:
+				logging.info("Motion Detected - " + now.strftime("%d/%m/%Y %H:%M:%S"))
+
+				relay1.on()
+				logging.info('RELAY 1 on')
+				pg.mixer.music.load("sounds/lightning.mp3")
+				pg.mixer.music.play()
+				time.sleep(5)
+				relay1.off()
+
+				relay2.on()
+				logging.info('RELAY 2 on')
+				pg.mixer.music.load("sounds/wolf_howl.mp3")
+				pg.mixer.music.play()
+				time.sleep(5)
+				relay2.off()
+
+
 			time.sleep(1)
-			logging.info('Relay2 on')
-			PIR_SENSOR.when_motion = relay2.on
 
-			# PIR_SENSOR.when_no_motion = relay1.off
-			# PIR_SENSOR.when_no_motion = relay2.off
 
-			time.sleep(5)
-			relay1.off
-			relay2.off
-			time.sleep(5)
-			# PIR_SENSOR.when_motion = relay.on
-			# time.sleep(1)
-
-			# PIR_SENSOR.when_no_motion = relay.off
-			# logging.info('Relay off')
-			time.sleep(5)
 		except Exception as e:
 			logging.debug('Error: ' + str(e))
 
-
-# GPIO.output(3, 0)
-# time.sleep(1)
 
 if __name__ == '__main__':
 	halloween()
