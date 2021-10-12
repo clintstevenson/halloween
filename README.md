@@ -11,7 +11,7 @@ This project uses 120 AC voltage which will give more flexibility on the devices
 * Python 3.7 (other previous versions of Python will likely work just fine)
 * Jupyter Notebook
 * External speakers
-* 2 x 15A recepticals.  One as the always hot power source for the RPi and the external speakers to connect.  The second receptical is to be switched on/off via the relay.  The relay receptical will have the tab removed between hot side screws to create two outlets that can be switched on/off using the two difference channels on the relay.
+* 2 x 15A recepticals.  One as the always hot power source for the RPi and the external speakers to connect.  The second receptical is to be switched on/off via the relay.  The relay receptical will have the tab removed between the hot side screws to create two outlets that can be switched on/off using the two difference channels on the relay.
 * 5'-10' of 14AWG electrical wire.  Note, 14AWG is readily available in the electrical section of any home improvement store.  The 14AWG wire can support 15 amps but the relay I use can only support 10 amps.  It never hurts to go a size larger for the wire.
 
 
