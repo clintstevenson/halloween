@@ -1,19 +1,18 @@
 # Raspberry Pi Halloween Motion Detection
-This uses Python 3.7 but other versions of Python will likely work. This also uses a simple stock installation of Rasbian.  I also installed Jupyter Notebook on the Raspberry Pi for ease in development.
+This project uses Python 3.7 but most other versions of Python will likely work. This also uses a simple stock installation of Rasbian.  I also installed Jupyter Notebook on the Raspberry Pi for ease in development.
 
 This project uses 120 AC voltage which will give more flexibility on the devices that can be switched on.  If you're not comfortable with AC voltage then you can alternatively substitute low voltage to be passed through the relay.
 
 ## Required Components
 * Raspberry Pi 4
 * PIR (Passive Infrared sensor) - https://www.amazon.com/dp/B00JOZTAC6
-* 2 Channel Relay.  This relay only support 10A passthru so make sure you're not running something large like a vacuum through it.  LED lights are probably what you should use. - https://www.amazon.com/dp/B00E0NTPP4
+* 2 Channel Relay.  This relay only supports 10A passthru so make sure you're not running something large (e.g. vacuum or toaster) through it.  LED lights are probably what you should use. - https://www.amazon.com/dp/B00E0NTPP4
 * 22 AWG Jumper cables.  I recommend 22 AWG for power.  You can also use the 22 AWG for the periphrial signal as well. - https://www.amazon.com/dp/B07XMHHRDY
 * Python 3.7 (other versions of Python will likely work just fine)
 * Jupyter Notebook
 * External speakers
 * 2 x 15A recepticals.  One as the always "hot" source power for the RPi and the external speakers to connect.  The second receptical is to be switched on/off via the relay.  The relay receptical will have the tab removed to create two outlets that can be switched on/off using the two difference channels on the relay.
 * 5'-10' of 14AWG electrical wire.  Note, 14AWG is readily available in the electrical section of any home improvement store.  The 14AWG wire can support 15 amps but the relay I use can only support 10 amps.  So in reality 18AWG wire would be sufficient for the relay.
-
 
 
 # Instructions
@@ -28,9 +27,12 @@ The simpliest way execute the program is to go into the `halloween` directory an
 If you are happy with the code you can run the program as a background process:
 `nohup python3.7 main.py &`
 
-If you want to have the program start as a service when booting the RPi it will take a couple more steps:
+Executing the Python file will create a log file called `halloween.log` that will timestamp every motion detection.
+
+If you want to have the program start as a service when booting the RPi it will take a couple more steps.  Setting up a service will start the script 
 ```
-sudo vi /etc/systemd/system/auto-geo.service
+# Use a text editor to create the following file
+# sudo vi /etc/systemd/system/halloween.service
 
 [Unit]
 Description=Runs Halloween Project
@@ -54,3 +56,12 @@ ExecStart=/home/rasberrypi/main.sh start
 [Install]
 WantedBy=multi-user.target
 ```
+
+To enable the service on boot:
+`sudo systemctl enable halloween`
+
+Then to manually start the `halloween` service execute the following command:
+`sudo systemctl start halloween`
+
+Then to stop the service execute the following command:
+`sudo systemctl stop halloween`
