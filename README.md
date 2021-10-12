@@ -36,22 +36,10 @@ If you want to have the program start as a service when booting the RPi it will 
 
 [Unit]
 Description=Runs Halloween Project
-# After=network.target
-# After=systemd-user-sessions.service
-# After=network-online.target
 
 [Service]
-# User=spark
-# Type=simple
-# PIDFile=/run/my-service.pid
 ExecStart=/home/rasberrypi/main.sh start
-# ExecReload=/home/transang/startup.sh reload
-# ExecStop=/home/transang/startup.sh stop
-# TimeoutSec=30
-# Restart=on-failure
-# RestartSec=30
-# StartLimitInterval=350
-# StartLimitBurst=10
+
 
 [Install]
 WantedBy=multi-user.target
