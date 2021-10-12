@@ -10,11 +10,47 @@ This project uses 120 AC voltage which will give more flexibility on the devices
 * 22 AWG Jumper cables.  I recommend 22 AWG for power.  You can also use the 22 AWG for the periphrial signal as well. - https://www.amazon.com/dp/B07XMHHRDY
 * Python 3.7 (other versions of Python will likely work just fine)
 * Jupyter Notebook
-* 2 x 15A recepticals.  One as the source power for the RPi to connect to.  The second to be switched on/off via the relay.
-* 5'-10' of 14AWG electrical wire.  Note, 14AWG is readily available in the electrical section of any home improvement store and it doesn't hurt to go slightly larger.  The 14AWG wire can support 15 amps but the relay I use can only support 10 amps.  So in reality 18AWG wire would be sufficient for the relay.
+* External speakers
+* 2 x 15A recepticals.  One as the always "hot" source power for the RPi and the external speakers to connect.  The second receptical is to be switched on/off via the relay.  The relay receptical will have the tab removed to create two outlets that can be switched on/off using the two difference channels on the relay.
+* 5'-10' of 14AWG electrical wire.  Note, 14AWG is readily available in the electrical section of any home improvement store.  The 14AWG wire can support 15 amps but the relay I use can only support 10 amps.  So in reality 18AWG wire would be sufficient for the relay.
+
 
 
 # Instructions
 * Install Rasbian on the RPi
-* Connect periphrials (PIR, relay)
-* Install Jupyter (or other editing tool, or simply use the stock text editor)
+* Connect RPi periphrials (PIR, relay)
+* Install Jupyter Notebook (or other editing tool, or simply use a stock text editor)
+* Construct a power distribution and relay box.  This will house the PIR, relay, RPi, relay receptical, and the hot receptical.
+* Construct the Halloween decorations.
+
+The simpliest way execute the program is to go into the `halloween` directory and execute the following function: `python3.7 main.py`
+
+If you are happy with the code you can run the program as a background process:
+`nohup python3.7 main.py &`
+
+If you want to have the program start as a service when booting the RPi it will take a couple more steps:
+```
+sudo vi /etc/systemd/system/auto-geo.service
+
+[Unit]
+Description=Runs Halloween Project
+# After=network.target
+# After=systemd-user-sessions.service
+# After=network-online.target
+
+[Service]
+# User=spark
+# Type=simple
+# PIDFile=/run/my-service.pid
+ExecStart=/home/rasberrypi/main.sh start
+# ExecReload=/home/transang/startup.sh reload
+# ExecStop=/home/transang/startup.sh stop
+# TimeoutSec=30
+# Restart=on-failure
+# RestartSec=30
+# StartLimitInterval=350
+# StartLimitBurst=10
+
+[Install]
+WantedBy=multi-user.target
+```
