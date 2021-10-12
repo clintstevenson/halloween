@@ -7,8 +7,8 @@ This project uses 120 AC voltage which will give more flexibility on the devices
 * Raspberry Pi 4
 * PIR (Passive Infrared sensor) - https://www.amazon.com/dp/B00JOZTAC6
 * 2 Channel Relay.  This relay only supports 10A passthru so make sure you're not running something large (e.g. vacuum or toaster) through it.  LED lights are probably what you should use. - https://www.amazon.com/dp/B00E0NTPP4
-* 22 AWG Jumper cables.  I recommend 22 AWG for power.  You can also use the 22 AWG for the periphrial signal as well. - https://www.amazon.com/dp/B07XMHHRDY
-* Python 3.7 (other versions of Python will likely work just fine)
+* 22 AWG jumper cables.  Use 22 AWG for power.  You can go smaller for the signial wire and use 24 AWG but if you already have the 22 AWG wire then that will work perfectly fine. - https://www.amazon.com/dp/B07XMHHRDY
+* Python 3.7 (other previous versions of Python will likely work just fine)
 * Jupyter Notebook
 * External speakers
 * 2 x 15A recepticals.  One as the always "hot" source power for the RPi and the external speakers to connect.  The second receptical is to be switched on/off via the relay.  The relay receptical will have the tab removed to create two outlets that can be switched on/off using the two difference channels on the relay.
