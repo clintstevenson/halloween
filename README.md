@@ -12,7 +12,7 @@ This project uses 120 AC voltage which will give more flexibility on the devices
 * Jupyter Notebook (optional if you want to test different Python code)
 * External speakers
 * 2 x 15A recepticals.  One will be used as the 'always hot' power source for the RPi and the external speakers.  The second receptical will be the 'relay receptical' and is to be switched on/off via the relay.  The relay receptical will have the tab removed between the hot side screws to create two independent plugs that can be switched on/off using the two difference channels on the relay.  You can then connect a power strip if you want to connect more devices (e.g. more lights).
-* 2'-3' of 14AWG electrical wire.  Note, 14AWG is readily available in the electrical section of any home improvement store.  The 14AWG wire can support 15 amps but the relay I use can only support 10 amps.  It never hurts to go a size larger for the wire.  It also fits nicely into the recepticals and will also fix snugly into the realy.  You can add an in-line fuse if for some wild reason you think you're going to be pulling more than 10 amps and you want to protect the relay.
+* 2'-3' of 14AWG electrical wire.  Note, 14AWG is readily available in the electrical section of any home improvement store.  The 14AWG wire can support 15 amps but the relay I use can only support 10 amps.  It never hurts to go a size larger for the wire.  It also fits nicely into the recepticals and will also fit snugly into the relay.  You can add an in-line fuse if, for some wild reason, you think you're going to be pulling more than 10 amps and you want to protect the relay.
 
 
 # Instructions
@@ -24,7 +24,7 @@ This project uses 120 AC voltage which will give more flexibility on the devices
 
 The simpliest way to execute the program is to go into the `halloween` directory and execute the following command: `python3.7 main.py`
 
-If you are happy with the code you can run the program as a background process.  Doing this will allow you to log out of the RPi.
+If you are happy with the code you can run the program as a background process.  Doing this will allow you to SSH into the RPi, start the program, then log out.  The program will continue to run.
 
 `nohup python3.7 main.py &`
 
