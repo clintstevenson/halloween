@@ -13,6 +13,7 @@ PIR_SENSOR = 24
 
 
 def halloween():
+	# Initialized the sensor, relay 1, and relay 2
 	pir = gz.MotionSensor(PIR_SENSOR)
 	relay1 = gz.OutputDevice(RELAY_1, active_high = False, initial_value = False)
 	relay2 = gz.OutputDevice(RELAY_2, active_high = False, initial_value = False)
@@ -21,10 +22,13 @@ def halloween():
 	logging.debug('Starting Halloween')
 
 	while True:
+		# Keep attempting to execute the program even after error is thrown.
 		try:
 			now = datetime.now()
+			# Sit and wait this command until motion is detected
 			pir.wait_for_motion(timeout = None)
 
+			# If motion is detected then turn the relay on and play the sounds.
 			if pir.motion_detected:
 				logging.info("Motion Detected - " + now.strftime("%d/%m/%Y %H:%M:%S"))
 
@@ -46,6 +50,7 @@ def halloween():
 
 		except Exception as e:
 			logging.debug('Error: ' + str(e))
+			time.sleep(30)
 
 
 if __name__ == '__main__':
