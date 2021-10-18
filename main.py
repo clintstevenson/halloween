@@ -5,19 +5,19 @@ import logging
 import pygame as pg
 import os
 
-pg.mixer.init()
 
+pg.mixer.init()
 RELAY_2 = 22
 RELAY_1 = 23
-
 PIR_SENSOR = 24
+
 
 def halloween():
 	pir = gz.MotionSensor(PIR_SENSOR)
-	relay1 = gz.OutputDevice(RELAY_1, active_high=False, initial_value=False)
-	relay2 = gz.OutputDevice(RELAY_2, active_high=False, initial_value=False)
+	relay1 = gz.OutputDevice(RELAY_1, active_high = False, initial_value = False)
+	relay2 = gz.OutputDevice(RELAY_2, active_high = False, initial_value = False)
 
-	logging.basicConfig(filename='halloween.log',level=logging.DEBUG)
+	logging.basicConfig(filename = 'halloween.log', level = logging.DEBUG)
 	logging.debug('Starting Halloween')
 
 	while True:
@@ -32,7 +32,7 @@ def halloween():
 				logging.info('RELAY 1 on')
 				pg.mixer.music.load("sounds/lightning.mp3")
 				pg.mixer.music.play()
-				time.sleep(5)
+				time.sleep(7)
 				relay1.off()
 
 				relay2.on()
@@ -42,9 +42,7 @@ def halloween():
 				time.sleep(5)
 				relay2.off()
 
-
 			time.sleep(1)
-
 
 		except Exception as e:
 			logging.debug('Error: ' + str(e))
