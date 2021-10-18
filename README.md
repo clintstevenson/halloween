@@ -22,7 +22,7 @@ This project uses 120 AC voltage which will give more flexibility on the devices
 * Construct a power distribution and relay box.  This will house the PIR, relay, RPi, relay receptical, and the hot receptical.  I simply built a wooden box to hold everything.
 * Construct the Halloween decorations.
 
-The simpliest way to execute the program is to go into the `halloween` directory and execute the following function: `python3.7 main.py`
+The simpliest way to execute the program is to go into the `halloween` directory and execute the following command: `python3.7 main.py`
 
 If you are happy with the code you can run the program as a background process.  Doing this will allow you to log out of the RPi.
 
