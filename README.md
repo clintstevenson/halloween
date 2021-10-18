@@ -6,8 +6,8 @@ This project uses 120 AC voltage which will give more flexibility on the devices
 ## Required Components
 * Raspberry Pi 4
 * PIR (Passive Infrared sensor) - https://www.amazon.com/dp/B00JOZTAC6
-* 2 Channel Relay.  This relay only supports 10A passthru so make sure you're not running something large (e.g. vacuum or toaster) through it.  LED lights are probably what you should use. - https://www.amazon.com/dp/B00E0NTPP4
-* 22 AWG jumper cables.  Use 22 AWG for power.  You can go smaller for the signial wire and use 24 AWG but if you already have the 22 AWG wire then that will work perfectly fine. - https://www.amazon.com/dp/B07XMHHRDY
+* 2 Channel Relay.  This relay only supports 10A passthrough so make sure you're not running something large (e.g. vacuum or toaster) through it.  LED lights are probably what you should use. - https://www.amazon.com/dp/B00E0NTPP4.  You can add an in-line fuse if you want to have added protection against blowing your relay.
+* 22 AWG jumper wire.  Use 22 AWG for power.  You can go smaller gauge for the signial wire and use 24 AWG but if you already have the 22 AWG wire then that will work perfectly fine. - https://www.amazon.com/dp/B07XMHHRDY.  I used 10CM length and it was adequate but 15CM or 30CM will give you added flexibilty where you can position the relay relative to your RPi.
 * Python 3.7 (earlier versions of Python will likely work just fine)
 * Jupyter Notebook (optional if you want to test different Python code)
 * External speakers
