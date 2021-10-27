@@ -31,20 +31,25 @@ If you are happy with the code you can run the program as a background process. 
 Executing the Python file will create a log file called `halloween.log` that will timestamp every motion detection.
 
 If you want to have the program start as a service when booting the RPi it will take a couple more steps.  Setting up a service will start the script 
+
+`sudo chmod +x main.sh`
+
 ```
 # Use a text editor to create the following file
-# sudo vi /etc/systemd/system/halloween.service
+# sudo vi /lib/systemd/system/halloween.service
 
-[Unit]
+Unit]
 Description=Runs Halloween Project
 
 [Service]
-ExecStart=/home/rasberrypi/main.sh start
-
+ExecStart=/bin/bash /home/pi/halloween/main.sh start
 
 [Install]
 WantedBy=multi-user.target
+                        
 ```
+
+`python3.7 /home/pi/halloween/main.py`
 
 To enable the service on boot:
 `sudo systemctl enable halloween`
